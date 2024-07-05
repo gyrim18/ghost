@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네 뒤에 있는 귀신 알아보기</title>
+    <style>
+        body {
+            background-color: #000; /* 검정색 배경 */
+            color: red; /* 붉은 글자 */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            background-color: #4a4e69;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #3e5c76;
+        }
+        g {
+            max-width: 100%;
+            height: auto;im
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>네 뒤에 있는 귀신 알아보기</h1>
+
+    <div id="inputSection">
+        <label for="yourName">너의 이름을 입력하세요:</label><br>
+        <input type="text" id="yourName" name="yourName"><br><br>
+        <button onclick="revealGhost()">귀신 알아보기</button><br><br>
+    </div>
+
+    <div id="resultSection" class="hidden">
+        <p id="result"></p>
+        <button onclick="restart()">다시하기</button>
+    </div>
+
+    <script>
+        function revealGhost() {
+            var yourName = document.getElementById("yourName").value;
+            var ghosts = [
+                "도깨비",
+                "초승달귀신",
+                "망자",
+                "유령",
+                "타라귀신",
+                "물귀신",
+                "계집마귀",
+                "무당 귀신",
+                "하귀신",
+                "홍시귀신",
+                "산신수",
+                "설마귀신",
+                "영양귀신",
+                "풍수귀신",
+                "마귀",
+                "무귀신",
+                "깔아귀신",
+                "파도 귀신",
+                "추령귀신",
+                "신선귀신",
+                "소악귀신",
+                "불꽃놀이 귀신",
+                "빛나귀신",
+                "김마귀신",
+                "시체물어",
+                "동백꽃 귀신",
+                "무인귀신",
+                "수취귀신",
+                "천년의 귀신"
+            ];
+
+            var randomIndex = Math.floor(Math.random() * ghosts.length);
+            var ghostName = ghosts[randomIndex];
+
+            // 결과 출력
+            var resultMessage = yourName + ', 너의 뒤에는 ' + ghostName + '이 있다.';
+            var resultElement = document.getElementById("result");
+            resultElement.innerText = resultMessage;
+
+            // 입력창 숨기고 결과 표시
+            var inputSection = document.getElementById("inputSection");
+            var resultSection = document.getElementById("resultSection");
+            inputSection.classList.add("hidden");
+            resultSection.classList.remove("hidden");
+        }
+
+        function restart() {
+            // 다시 시작하기: 입력창 보이기, 결과 숨기기, 입력 값 초기화
+            var inputSection = document.getElementById("inputSection");
+            var resultSection = document.getElementById("resultSection");
+            var yourNameInput = document.getElementById("yourName");
+
+            inputSection.classList.remove("hidden");
+            resultSection.classList.add("hidden");
+            yourNameInput.value = "";
+        }
+    </script>
+</body>
+</html>
